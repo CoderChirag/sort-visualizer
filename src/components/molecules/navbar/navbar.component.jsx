@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTheme, styled } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
@@ -10,13 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import ListSubheader from '@mui/material/ListSubheader';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import InboxIcon from '@mui/icons-material/Inbox';
-import MailIcon from '@mui/icons-material/Mail';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -25,6 +22,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../../../contexts/theme/theme.context';
+
+const drawerWidth = 250;
 
 const DrawerHeader = styled('div')(({ theme }) => ({
 	display: 'flex',
@@ -38,7 +37,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const Navbar = () => {
 	const theme = useTheme();
 	const colorMode = useContext(ThemeContext);
-	const [open, setOpen] = useState(false);
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	const toggleDrawer = event => {
 		if (
@@ -47,7 +46,7 @@ const Navbar = () => {
 		) {
 			return;
 		}
-		setOpen(!open);
+		setMenuOpen(!menuOpen);
 	};
 
 	return (
@@ -74,21 +73,23 @@ const Navbar = () => {
 						<MenuIcon />
 						<Drawer
 							anchor='left'
-							open={open}
-							// onClose={toggleDrawer}
+							open={menuOpen}
+							onClose={toggleDrawer}
 							sx={{
 								transform: 'none',
 								transition:
 									'transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms',
+								width: drawerWidth,
 							}}
 						>
 							<Box
 								sx={{
-									width: 250,
+									width: drawerWidth,
+									overflowX: 'hidden',
 								}}
 								role='presentation'
-								// onClick={toggleDrawer}
-								// onKeyDown={toggleDrawer}
+								onClick={toggleDrawer}
+								onKeyDown={toggleDrawer}
 							>
 								<DrawerHeader>
 									<Link to='/'>
@@ -118,6 +119,44 @@ const Navbar = () => {
 								</DrawerHeader>
 								<Divider />
 								<Divider />
+								<List
+									subheader={
+										<ListSubheader
+											component='div'
+											sx={{
+												backgroundColor: 'inherit',
+												fontSize: '1rem',
+												fontWeight: '900',
+												color: 'text.secondary',
+											}}
+										>
+											Quadratic
+										</ListSubheader>
+									}
+									sx={{ marginTop: '15px' }}
+								>
+									<Link to='/sorting/bubbleSort'>
+										<ListItemButton>
+											<ListItemIcon>
+												<ChevronRightIcon
+													sx={{
+														minWidth: 'auto',
+														marginRight: '16px',
+														marginLeft: '8px',
+													}}
+												/>
+											</ListItemIcon>
+											<ListItemText
+												primary='Bubble Sort'
+												sx={{
+													paddingLeft: '15px',
+													fontSize: '1.5rem',
+													transform: 'scale(1.3)',
+												}}
+											></ListItemText>
+										</ListItemButton>
+									</Link>
+								</List>
 							</Box>
 						</Drawer>
 					</IconButton>
