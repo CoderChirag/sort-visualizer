@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
-import { useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useTheme, styled } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -18,8 +19,21 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../../../contexts/theme/theme.context';
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+	display: 'flex',
+	alignItems: 'center',
+	padding: theme.spacing(0, 1),
+	// necessary for content to be below app bar
+	...theme.mixins.toolbar,
+	justifyContent: 'space-between',
+}));
 
 const Navbar = () => {
 	const theme = useTheme();
@@ -39,7 +53,7 @@ const Navbar = () => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar
-				position='static'
+				position='fixed'
 				sx={{
 					backgroundColor: 'primary.main',
 				}}
@@ -61,59 +75,49 @@ const Navbar = () => {
 						<Drawer
 							anchor='left'
 							open={open}
-							onClose={toggleDrawer}
-							sx={{ backgroundColor: 'primary.main' }}
+							// onClose={toggleDrawer}
+							sx={{
+								transform: 'none',
+								transition:
+									'transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms',
+							}}
 						>
 							<Box
 								sx={{
 									width: 250,
 								}}
 								role='presentation'
-								onClick={toggleDrawer}
-								onKeyDown={toggleDrawer}
+								// onClick={toggleDrawer}
+								// onKeyDown={toggleDrawer}
 							>
-								<List>
-									{[
-										'Inbox',
-										'Starred',
-										'Send email',
-										'Drafts',
-									].map((text, index) => (
-										<ListItem key={text} disablePadding>
-											<ListItemButton>
-												<ListItemIcon>
-													{index % 2 === 0 ? (
-														<InboxIcon color='text' />
-													) : (
-														<MailIcon color='text' />
-													)}
-												</ListItemIcon>
-												<ListItemText primary={text} />
-											</ListItemButton>
-										</ListItem>
-									))}
-								</List>
+								<DrawerHeader>
+									<Link to='/'>
+										<Typography
+											variant='h6'
+											sx={{
+												marginTop: '5px',
+												justifySelf: 'center',
+											}}
+										>
+											<HomeIcon
+												sx={{
+													marginBottom: '-4px',
+													marginRight: '8px',
+												}}
+											/>
+											Home
+										</Typography>
+									</Link>
+									<IconButton onClick={toggleDrawer}>
+										{theme.direction === 'ltr' ? (
+											<ChevronLeftIcon />
+										) : (
+											<ChevronRightIcon />
+										)}
+									</IconButton>
+								</DrawerHeader>
 								<Divider />
-								<List>
-									{['All mail', 'Trash', 'Spam'].map(
-										(text, index) => (
-											<ListItem key={text} disablePadding>
-												<ListItemButton>
-													<ListItemIcon>
-														{index % 2 === 0 ? (
-															<InboxIcon />
-														) : (
-															<MailIcon />
-														)}
-													</ListItemIcon>
-													<ListItemText
-														primary={text}
-													/>
-												</ListItemButton>
-											</ListItem>
-										)
-									)}
-								</List>
+								<Divider />
 							</Box>
 						</Drawer>
 					</IconButton>

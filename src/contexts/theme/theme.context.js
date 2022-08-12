@@ -29,7 +29,7 @@ export const ThemeProvider = ({ children }) => {
 						? {
 								type: 'dark',
 								primary: {
-									main: '#091134',
+									main: '#02082a',
 									light: '#091c34',
 									dark: '#070422',
 									contrastText: '#fff',
@@ -61,7 +61,14 @@ export const ThemeProvider = ({ children }) => {
 								MuiDrawer: {
 									styleOverrides: {
 										paper: {
-											backgroundColor: '#091c34',
+											backgroundColor: '#000524',
+											boxShadow:
+												'0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%)',
+											borderRight: 0,
+										},
+										paperAnchorLeft: {
+											right: 'auto',
+											left: 0,
 										},
 									},
 								},
