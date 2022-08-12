@@ -4,7 +4,7 @@ import {
 	getLastSortedIndices,
 	swap,
 	createFunctionalityKeys,
-} from '../utils/algorithms/algorithm-util';
+} from '../utils/algorithms/algorithm.util';
 
 const bubbleSort = arr => {
 	// Create a new Stack Trace
