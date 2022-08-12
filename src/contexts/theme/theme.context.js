@@ -1,10 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useMemo } from 'react';
 import {
 	ThemeProvider as MuiThemeProvider,
 	createTheme,
 } from '@mui/material/styles';
 
-const darkTheme = createTheme({
+const theme = createTheme({
 	palette: {
 		type: 'dark',
 		primary: {
@@ -32,6 +32,7 @@ const darkTheme = createTheme({
 		},
 	},
 	components: {
+		type: 'dark',
 		MuiDrawer: {
 			styleOverrides: {
 				paper: {
@@ -57,22 +58,33 @@ export const ThemeContext = createContext({
 });
 
 export const ThemeProvider = ({ children }) => {
-	const [theme, setTheme] = useState('dark');
-	const [muiTheme, setMuiTheme] = useState(darkTheme);
+	const [mode, setMode] = useState('dark');
+	const colorMode = useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode(prevMode => (prevMode === 'dark' ? 'light' : 'dark'));
+			},
+		}),
+		[]
+	);
 
-	const value = { theme, setTheme };
-
-	useEffect(() => {
-		if (theme === 'dark') {
-			setMuiTheme(darkTheme);
-		} else {
-			setMuiTheme(lightTheme);
-		}
-	}, [theme]);
+	const theme = useMemo(
+		() =>
+			createTheme({
+				palette: {
+					mode,
+					// ...(mode === 'dark'
+					//     ? {
+					//  }
+					// )
+				},
+			}),
+		[mode]
+	);
 
 	return (
-		<ThemeContext.Provider value={value}>
-			<MuiThemeProvider theme={muiTheme}>{children}</MuiThemeProvider>
+		<ThemeContext.Provider value={colorMode}>
+			<MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
 		</ThemeContext.Provider>
 	);
 };

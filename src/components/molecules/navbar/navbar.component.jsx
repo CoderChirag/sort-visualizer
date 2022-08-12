@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -7,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -16,9 +16,14 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { classes } from '@mui/material/styles';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+
+import { ThemeContext } from '../../../contexts/theme/theme.context';
 
 const Navbar = () => {
+	const theme = useTheme();
+	const colorMode = useContext(ThemeContext);
 	const [open, setOpen] = useState(false);
 
 	const toggleDrawer = event => {
@@ -116,8 +121,16 @@ const Navbar = () => {
 					>
 						Sort Visualizer
 					</Typography>
-					<Button color='inherit'>Login</Button>
-					<MailIcon />
+					<IconButton
+						onClick={colorMode.toggleColorMode}
+						color='inherit'
+					>
+						{theme.palette.mode === 'dark' ? (
+							<Brightness7Icon />
+						) : (
+							<Brightness4Icon />
+						)}
+					</IconButton>
 				</Toolbar>
 			</AppBar>
 		</Box>
