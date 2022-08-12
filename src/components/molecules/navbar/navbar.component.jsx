@@ -40,7 +40,9 @@ const Navbar = () => {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar
 				position='static'
-				color='primary'
+				sx={{
+					backgroundColor: 'primary.main',
+				}}
 				style={{
 					boxShadow:
 						'0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
@@ -60,6 +62,7 @@ const Navbar = () => {
 							anchor='left'
 							open={open}
 							onClose={toggleDrawer}
+							sx={{ backgroundColor: 'primary.main' }}
 						>
 							<Box
 								sx={{
@@ -126,7 +129,7 @@ const Navbar = () => {
 						color='inherit'
 					>
 						{theme.palette.mode === 'dark' ? (
-							<Brightness7Icon />
+							<Brightness7Icon sx={{ color: 'secondary.dark' }} />
 						) : (
 							<Brightness4Icon />
 						)}
