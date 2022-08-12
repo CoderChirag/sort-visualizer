@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+<img src="https://avatars.githubusercontent.com/u/72244964?v=4" align="right" width="110" height="110"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Sort-Visualizer
+
+[![](https://img.shields.io/badge/sort-visualizer-v1.0.0-blue)](#)
+[![Stars](https://img.shields.io/github/stars/CoderChirag/sort-visualizer?style=flat-square&color=yellow)](https://github.com/CoderChirag/sort-visualizer/stargazers)
+[![Forks](https://img.shields.io/github/forks/CoderChirag/sort-visualizer?style=flat-square&color=orange)](https://github.com/CoderChirag/sort-visualizer/fork)
+[![Size](https://img.shields.io/github/repo-size/CoderChirag/sort-visualizer?style=flat-square&color=green)](https://github.com/CoderChirag/sort-visualizer)
+[![Contributors](https://img.shields.io/github/contributors/CoderChirag/sort-visualizer?style=flat-square&color=green)](https://github.com/CoderChirag/sort-visualizer/graphs/contributors)
+[![Node.Js](https://img.shields.io/badge/Node.Js-v16.14.2-blue)](https://nodejs.org/en/)
+[![MUI](https://img.shields.io/badge/MUI-v5.10.0-blue)](https://mui.com)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/CoderChirag/sort-visualizer/graphs/commit-activity) 
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/CoderChirag/sort-visualizer)
+----
+
+# Demo Website
+
+
 
 ## Available Scripts
 
@@ -28,43 +43,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
