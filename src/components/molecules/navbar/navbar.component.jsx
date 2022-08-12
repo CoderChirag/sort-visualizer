@@ -4,12 +4,19 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = () => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position='static'>
+			<AppBar
+				position='static'
+				color='primary'
+				style={{
+					boxShadow:
+						'0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+				}}
+			>
 				<Toolbar>
 					<IconButton
 						size='large'
@@ -22,7 +29,7 @@ const Navbar = () => {
 					</IconButton>
 					<Typography
 						variant='h6'
-						component='div'
+						component='span'
 						sx={{ flexGrow: 1 }}
 					>
 						News

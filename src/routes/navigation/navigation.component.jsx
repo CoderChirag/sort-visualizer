@@ -1,5 +1,7 @@
-import { Navbar } from '../../components/molecules/Navbar/Navbar.component';
+import Navbar from '../../components/molecules/navbar/navbar.component';
 
-export const Navigation = () => {
+const Navigation = () => {
 	return <Navbar />;
 };
+
+export default Navigation;
