@@ -11,6 +11,7 @@ const darkTheme = createTheme({
 			main: '#091c34',
 			light: '#091c34',
 			dark: '#070422',
+			contrastText: '#fff',
 		},
 		secondary: {
 			main: '#c6ff00',
@@ -21,6 +22,22 @@ const darkTheme = createTheme({
 		background: {
 			default: '#161625',
 			paper: '#282828',
+		},
+		text: {
+			main: '#ffffff',
+			primary: '#ffffff',
+			secondary: '#rgba(255,255,255,0.7)',
+			disabled: '#rgba(255,255,255,0.5)',
+			hint: '#rgba(255,255,255,0.5)',
+		},
+	},
+	components: {
+		MuiDrawer: {
+			styleOverrides: {
+				paper: {
+					backgroundColor: '#091c34',
+				},
+			},
 		},
 	},
 });
