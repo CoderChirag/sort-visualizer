@@ -19,6 +19,7 @@ const bubbleSort = arr => {
 			]);
 			if (arr[j] > arr[j + 1]) {
 				swap(arr, j, j + 1);
+				// Swap A[j] and A[j+1]
 				addToStackTrace(
 					stackTrace,
 					arr,
@@ -28,6 +29,7 @@ const bubbleSort = arr => {
 				);
 			}
 		}
+		// Final Sorted Value
 		addToStackTrace(stackTrace, arr, [
 			...getLastSortedIndices(stackTrace),
 			arr.length - 1 - i,
