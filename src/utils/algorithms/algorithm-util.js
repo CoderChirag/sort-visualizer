@@ -40,7 +40,7 @@ export const swap = (arr, i, j) => {
 	arr[i] = arr[i] ^ arr[j];
 };
 
-export const createKey = (
+export const createFunctionalityKeys = (
 	functionalityA,
 	functionalityB,
 	functionalityC,
