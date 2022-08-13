@@ -19,6 +19,8 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../../../contexts/theme/theme.context';
@@ -59,6 +61,8 @@ const Navbar = () => {
 				style={{
 					boxShadow:
 						'0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%)',
+					height: '74px',
+					justifyContent: 'flex-end',
 				}}
 			>
 				<Toolbar>
@@ -70,7 +74,11 @@ const Navbar = () => {
 						sx={{ mr: 2 }}
 						onClick={toggleDrawer}
 					>
-						<MenuIcon />
+						<MenuIcon
+							sx={{
+								marginRight: { xs: '-15px', md: '15px' },
+							}}
+						/>
 						<Drawer
 							anchor='left'
 							open={menuOpen}
@@ -167,6 +175,24 @@ const Navbar = () => {
 					>
 						Sort Visualizer
 					</Typography>
+					<Button
+						color='inherit'
+						sx={{ display: { xs: 'none', md: 'block' } }}
+					>
+						Randomize
+					</Button>
+					<Slider
+						defaultValue={10}
+						aria-label='Default'
+						valueLabelDisplay='on'
+						color='secondary'
+						sx={{
+							width: '10%',
+							marginLeft: '25px',
+							marginRight: '10px',
+							display: { xs: 'none', md: 'block' },
+						}}
+					/>
 					<IconButton
 						onClick={colorMode.toggleColorMode}
 						color='inherit'
