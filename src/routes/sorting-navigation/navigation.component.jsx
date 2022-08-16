@@ -33,34 +33,40 @@ const SortingNavigation = () => {
 	};
 
 	return (
-		<Navbar>
-			<Button
-				color='inherit'
-				sx={{ display: { xs: 'none', md: 'block' } }}
-				onClick={generateNewArray}
-			>
-				Randomize
-			</Button>
-			<Slider
-				defaultValue={arrayLength}
-				aria-label='Default'
-				color='secondary'
-				sx={{
-					width: '10%',
-					marginLeft: '25px',
-					marginRight: '10px',
-					display: { xs: 'none', md: 'block' },
-				}}
-				onChange={handleArrayLengthChange}
-			/>
-			<Typography
-				variant='p'
-				component='span'
-				sx={{ marginRight: '25px', marginLeft: '10px' }}
-			>
-				{arrayLength}
-			</Typography>
-		</Navbar>
+		<>
+			<Navbar>
+				<Button
+					color='inherit'
+					sx={{ display: { xs: 'none', md: 'block' } }}
+					onClick={generateNewArray}
+				>
+					Randomize
+				</Button>
+				<Slider
+					defaultValue={arrayLength}
+					aria-label='Default'
+					color='secondary'
+					sx={{
+						width: '10%',
+						marginLeft: '25px',
+						marginRight: '10px',
+						display: { xs: 'none', md: 'block' },
+					}}
+					onChange={handleArrayLengthChange}
+				/>
+				<Typography
+					variant='p'
+					component='span'
+					sx={{
+						marginRight: '25px',
+						marginLeft: '10px',
+						display: { xs: 'none', md: 'block' },
+					}}
+				>
+					{arrayLength}
+				</Typography>
+			</Navbar>
+		</>
 	);
 };
 
