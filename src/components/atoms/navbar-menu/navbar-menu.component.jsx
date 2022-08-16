@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha, useTheme } from '@mui/material/styles';
 
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -28,11 +28,13 @@ const StyledMenu = styled(props => (
 		marginTop: theme.spacing(0.5),
 		minWidth: '140px',
 		color:
-			theme.palette.mode === 'light'
-				? 'rgb(55, 65, 81)'
-				: theme.palette.grey[300],
+			theme.palette.mode === 'light' ? '#000' : theme.palette.grey[300],
 		boxShadow:
 			'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+		backgroundColor:
+			theme.palette.mode === 'light'
+				? '#acfbbe'
+				: theme.palette.grey[850],
 		'& .MuiMenu-list': {
 			padding: '4px 0',
 		},
@@ -58,6 +60,8 @@ const NavbarMenu = ({
 	arrayLength,
 	arrayLengthHandler,
 }) => {
+	const theme = useTheme();
+
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
@@ -130,14 +134,28 @@ const NavbarMenu = ({
 					sx={{ display: 'flex', justifyContent: 'space-between' }}
 				>
 					<RemoveIcon
-						style={{ marginRight: 0, cursor: 'pointer' }}
+						style={{
+							marginRight: 0,
+							cursor: 'pointer',
+							color:
+								theme.palette.mode === 'light'
+									? '#000'
+									: '#fff',
+						}}
 						onClick={decrementArrayLength}
 					/>
 					<Typography variant='p' component='span'>
 						{arrayLength}
 					</Typography>
 					<AddIcon
-						style={{ marginRight: '0', cursor: 'pointer' }}
+						style={{
+							marginRight: '0',
+							cursor: 'pointer',
+							color:
+								theme.palette.mode === 'light'
+									? '#000'
+									: '#fff',
+						}}
 						onClick={incrementArrayLength}
 					/>
 				</MenuItem>
