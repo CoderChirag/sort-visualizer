@@ -10,7 +10,7 @@ export const ThemeContext = createContext({
 });
 
 export const ThemeProvider = ({ children }) => {
-	const [mode, setMode] = useState('dark');
+	const [mode, setMode] = useState('light');
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {
@@ -52,7 +52,22 @@ export const ThemeProvider = ({ children }) => {
 									hint: 'rgba(255,255,255,0.5)',
 								},
 						  }
-						: {}),
+						: {
+								type: 'light',
+								primary: {
+									main: '#ccff90',
+									light: '#dfffdc',
+									dark: '#4edc4e',
+									contrastText: '#000000',
+								},
+								secondary: {
+									main: '#ff1744',
+									contrastText: '#ffffff',
+								},
+								background: {
+									default: '#dfffdc',
+								},
+						  }),
 				},
 				components: {
 					...(mode === 'dark'
@@ -73,7 +88,23 @@ export const ThemeProvider = ({ children }) => {
 									},
 								},
 						  }
-						: {}),
+						: {
+								type: 'light',
+								MuiDrawer: {
+									styleOverrides: {
+										paper: {
+											backgroundColor: '#d4e5d8',
+											boxShadow:
+												'0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%)',
+											borderRight: 0,
+										},
+										paperAnchorLeft: {
+											right: 'auto',
+											left: 0,
+										},
+									},
+								},
+						  }),
 				},
 			}),
 		[mode]

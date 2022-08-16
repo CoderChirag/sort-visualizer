@@ -67,7 +67,6 @@ const SortingNavigation = () => {
 				>
 					{arrayLength}
 				</Typography>
-				{console.log('render')}
 				<NavbarMenu
 					sx={{ display: { xs: 'inline-flex', md: 'none' } }}
 					randomizeHandler={generateNewArray}
