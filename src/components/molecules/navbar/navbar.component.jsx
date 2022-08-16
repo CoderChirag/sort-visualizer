@@ -19,8 +19,6 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import HomeIcon from '@mui/icons-material/Home';
-import Button from '@mui/material/Button';
-import Slider from '@mui/material/Slider';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../../../contexts/theme/theme.context';
@@ -36,7 +34,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 	justifyContent: 'space-between',
 }));
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
 	const theme = useTheme();
 	const colorMode = useContext(ThemeContext);
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -175,7 +173,7 @@ const Navbar = () => {
 					>
 						Sort Visualizer
 					</Typography>
-					<Button
+					{/* <Button
 						color='inherit'
 						sx={{ display: { xs: 'none', md: 'block' } }}
 					>
@@ -183,8 +181,8 @@ const Navbar = () => {
 					</Button>
 					<Slider
 						defaultValue={10}
+						valueLabelDisplay='auto'
 						aria-label='Default'
-						valueLabelDisplay='on'
 						color='secondary'
 						sx={{
 							width: '10%',
@@ -192,7 +190,8 @@ const Navbar = () => {
 							marginRight: '10px',
 							display: { xs: 'none', md: 'block' },
 						}}
-					/>
+					/> */}
+					{children}
 					<IconButton
 						onClick={colorMode.toggleColorMode}
 						color='inherit'
