@@ -87,6 +87,31 @@ export const ThemeProvider = ({ children }) => {
 										},
 									},
 								},
+								MuiCssBaseline: {
+									styleOverrides: {
+										body: {
+											scrollbarColor: '#c6ff00 #191e3d',
+											'&*': {
+												'scrollbar-width': 'thin',
+												'scrollbar-color':
+													'#c6ff00 #191e3d',
+											},
+											'&::-webkit-scrollbar, & *::-webkit-scrollbar':
+												{
+													width: '6px',
+												},
+											'&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track':
+												{
+													background: '#191e3d',
+												},
+											'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb':
+												{
+													backgroundColor: '#c6ff00',
+													borderRadius: '10px',
+												},
+										},
+									},
+								},
 						  }
 						: {
 								type: 'light',
@@ -101,6 +126,31 @@ export const ThemeProvider = ({ children }) => {
 										paperAnchorLeft: {
 											right: 'auto',
 											left: 0,
+										},
+									},
+								},
+								MuiCssBaseline: {
+									styleOverrides: {
+										body: {
+											scrollbarColor: '#ff1744 #ccff90',
+											'&*': {
+												'scrollbar-width': 'thin',
+												'scrollbar-color':
+													'#ff1744 #ccff90',
+											},
+											'&::-webkit-scrollbar, & *::-webkit-scrollbar':
+												{
+													width: '6px',
+												},
+											'&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track':
+												{
+													background: '#ccff90',
+												},
+											'&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb':
+												{
+													backgroundColor: '#ff1744',
+													borderRadius: '10px',
+												},
 										},
 									},
 								},

@@ -35,7 +35,6 @@ const BubbleSort = arr => {
 			arr.length - 1 - i,
 		]);
 	}
-	console.log(stackTrace);
 	return stackTrace;
 };
 

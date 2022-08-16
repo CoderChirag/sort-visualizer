@@ -89,6 +89,7 @@ const NavbarMenu = ({
 
 	return (
 		<>
+			{console.log(theme)}
 			<Button
 				id='demo-customized-button'
 				aria-controls={open ? 'demo-customized-menu' : undefined}

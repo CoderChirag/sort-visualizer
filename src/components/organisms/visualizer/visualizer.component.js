@@ -13,7 +13,16 @@ const Visualizer = ({ algorithm, array }) => {
 		setStackTrace(stackTrace);
 	}, [array, algorithm]);
 
-	return <></>;
+	return (
+		<>
+			<Box
+				sx={{
+					width: '100%',
+					height: '100vh',
+				}}
+			></Box>
+		</>
+	);
 };
 
 export default Visualizer;

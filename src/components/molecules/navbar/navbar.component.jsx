@@ -34,6 +34,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 	justifyContent: 'space-between',
 }));
 
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
+
 const Navbar = ({ children }) => {
 	const theme = useTheme();
 	const colorMode = useContext(ThemeContext);
@@ -52,6 +54,7 @@ const Navbar = ({ children }) => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar
+				component='nav'
 				position='fixed'
 				sx={{
 					backgroundColor: 'primary.main',
@@ -202,6 +205,7 @@ const Navbar = ({ children }) => {
 					</IconButton>
 				</Toolbar>
 			</AppBar>
+			<Offset />
 		</Box>
 	);
 };
