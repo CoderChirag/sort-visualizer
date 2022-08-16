@@ -6,7 +6,7 @@ import {
 	createFunctionalityKeys,
 } from '../utils/algorithms/algorithm.util';
 
-const bubbleSort = arr => {
+const BubbleSort = arr => {
 	// Create a new Stack Trace
 	const stackTrace = newStackTrace(arr);
 	// Sorting Algorithm
@@ -35,6 +35,7 @@ const bubbleSort = arr => {
 			arr.length - 1 - i,
 		]);
 	}
+	console.log(stackTrace);
 	return stackTrace;
 };
 
@@ -43,4 +44,4 @@ export const bubbleSortFunctionalityKeys = createFunctionalityKeys(
 	'Swapping'
 );
 
-export default bubbleSort;
+export default BubbleSort;

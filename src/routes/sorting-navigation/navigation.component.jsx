@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
 import { Typography } from '@mui/material';
-import NavbarMenu from '../../components/atoms/navbar-menu/navbar-menu.component';
 
+import NavbarMenu from '../../components/atoms/navbar-menu/navbar-menu.component';
 import Navbar from '../../components/molecules/navbar/navbar.component';
+import Visualizer from '../../components/organisms/visualizer/visualizer.component';
 
 const SortingNavigation = () => {
-	const [arrayLength, setArrayLength] = useState(10);
+	const params = useParams();
+	const [arrayLength, setArrayLength] = useState(5);
 	const [array, setArray] = useState([]);
 
 	const generateNewArray = () => {
@@ -74,6 +77,7 @@ const SortingNavigation = () => {
 					arrayLengthHandler={setArrayLength}
 				/>
 			</Navbar>
+			<Visualizer algorithm={params.algorithm} array={array} />
 		</>
 	);
 };
