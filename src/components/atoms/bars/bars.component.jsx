@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 const Bar = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
@@ -8,7 +9,7 @@ const Bar = styled(Paper)(({ theme }) => ({
 	textAlign: 'center',
 	color: theme.palette.text.secondary,
 	display: 'flex',
-	justifyContent: 'space-between',
+	justifyContent: 'center',
 	alignItems: 'flex-end',
 	borderBottomLeftRadius: 0,
 	borderBottomRightRadius: 0,
@@ -40,16 +41,35 @@ const Bars = ({ array }) => {
 							: {}),
 						marginBottom: '0!important',
 					}}
-				/>
+				>
+					<Typography
+						variant='h6'
+						color='textSecondary'
+						component='div'
+						sx={{
+							fontSize: {
+								xs: '1rem',
+								sm: '1.25rem',
+							},
+							display: {
+								xs: `${
+									100 / array.length <= 10
+										? 'none'
+										: 'inherit'
+								}`,
+								sm: `${
+									100 / array.length <= 9 ? 'none' : 'inherit'
+								}`,
+								md: `${
+									100 / array.length <= 4 ? 'none' : 'inherit'
+								}`,
+							},
+						}}
+					>
+						{num}
+					</Typography>
+				</Bar>
 			))}
-			{/* <Paper
-					elevation={0}
-					key={`${index}__${num}`}
-					sx={{
-						height: `${(num / Math.max(...array)) * 100}%`,
-						width: `${100 / array.length}%`,
-					}}
-				/> */}
 		</>
 	);
 };
