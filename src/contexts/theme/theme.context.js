@@ -62,6 +62,7 @@ export const ThemeProvider = ({ children }) => {
 								},
 								secondary: {
 									main: '#ff1744',
+									dark: '#d50000',
 									contrastText: '#ffffff',
 								},
 								background: {
