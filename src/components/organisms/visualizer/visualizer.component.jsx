@@ -27,7 +27,7 @@ const Visualizer = ({ algorithm, array }) => {
 					padding: { xs: '15px 8px', md: '20px 18px' },
 				}}
 			>
-				<Frame bars={array.length} array={array} />
+				<Frame array={array} />
 			</Box>
 		</>
 	);

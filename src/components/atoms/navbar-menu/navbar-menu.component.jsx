@@ -78,13 +78,15 @@ const NavbarMenu = ({
 	};
 
 	const decrementArrayLength = () => {
-		if (arrayLength > 0) {
+		if (arrayLength > 6) {
 			arrayLengthHandler(arrayLength - 1);
 		}
 	};
 
 	const incrementArrayLength = () => {
-		arrayLengthHandler(arrayLength + 1);
+		if (arrayLength < 100) {
+			arrayLengthHandler(arrayLength + 1);
+		}
 	};
 
 	return (

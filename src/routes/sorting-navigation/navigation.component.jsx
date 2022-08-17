@@ -58,6 +58,8 @@ const SortingNavigation = () => {
 						display: { xs: 'none', md: 'block' },
 					}}
 					onChange={handleArrayLengthChange}
+					min={5}
+					max={100}
 				/>
 				<Typography
 					variant='p'
