@@ -32,13 +32,9 @@ const Item = styled(Paper)(({ theme }) => ({
 const Frame = ({ array }) => {
 	return (
 		<>
-			{/* <Grid container sx={{ height: '100%' }}> */}
-			{/* <Grid item xs={12}> */}
 			<Item>
 				<Bars array={array} />
 			</Item>
-			{/* </Grid> */}
-			{/* </Grid> */}
 		</>
 	);
 };

@@ -8,6 +8,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 
+import { useAppControls } from '../../../hooks/useAppControls.hook';
+
 const PlayButton = styled(Button)(({ theme }) => ({
 	borderRadius: '100%',
 	backgroundColor: theme.palette.secondary.main,
@@ -26,8 +28,10 @@ const PlayButton = styled(Button)(({ theme }) => ({
 }));
 
 const AppControls = ({ stackTrace, setCurrentArr }) => {
+	const [isPlaying, setIsPlaying] = useAppControls(stackTrace, setCurrentArr);
+
 	return (
-		<Grid container justifyContent='center' spacing={2}>
+		<Grid container justifyContent='center' alignItems='center' spacing={2}>
 			<Grid
 				item
 				sx={{
@@ -54,10 +58,17 @@ const AppControls = ({ stackTrace, setCurrentArr }) => {
 			</Grid>
 			<Grid item>
 				<PlayButton>
-					<PlayArrowIcon
-						sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
-					/>
-					{/* <PauseIcon sx={{ fontSize: '2.5rem' }} /> */}
+					{isPlaying ? (
+						<PauseIcon
+							sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
+							onClick={() => setIsPlaying(false)}
+						/>
+					) : (
+						<PlayArrowIcon
+							sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
+							onClick={() => setIsPlaying(true)}
+						/>
+					)}
 				</PlayButton>
 			</Grid>
 			<Grid

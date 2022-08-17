@@ -24,7 +24,6 @@ const Visualizer = ({ algorithm, array }) => {
 		console.log(1);
 		const interval = setInterval(() => {
 			if (index < stackTrace.length) {
-				// console.log(stackTrace[index]['arr']);
 				setCurrentArr([...stackTrace[index]['arr']]);
 				index++;
 			} else {
@@ -45,7 +44,6 @@ const Visualizer = ({ algorithm, array }) => {
 					padding: { xs: '15px 8px', md: '20px 18px' },
 				}}
 			>
-				{/* <Grid container columnSpacing={0}> */}
 				<Grid item xs={12} sx={{ height: { xs: '50%', md: '65%' } }}>
 					<Frame array={currentArr} />
 				</Grid>
@@ -54,11 +52,6 @@ const Visualizer = ({ algorithm, array }) => {
 						stackTrace={stackTrace}
 						setCurrentArr={setCurrentArr}
 					/>
-					{/* <Grid container justifyContent='center' spacing={0}>
-						<Grid item>
-							<Paper>ABC</Paper>
-						</Grid>
-					</Grid> */}
 				</Grid>
 			</Box>
 		</>
