@@ -92,9 +92,13 @@ export const ThemeProvider = ({ children }) => {
 										body: {
 											scrollbarColor: '#c6ff00 #191e3d',
 											'&*': {
-												'scrollbar-width': 'thin',
-												'scrollbar-color':
+												scrollbarWidth: 'thin',
+												scrollbarColor:
 													'#c6ff00 #191e3d',
+												boxSizing: 'border-box',
+											},
+											'&*::before, *::after': {
+												boxSizing: 'border-box',
 											},
 											'&::-webkit-scrollbar, & *::-webkit-scrollbar':
 												{
@@ -134,9 +138,13 @@ export const ThemeProvider = ({ children }) => {
 										body: {
 											scrollbarColor: '#ff1744 #ccff90',
 											'&*': {
-												'scrollbar-width': 'thin',
-												'scrollbar-color':
+												scrollbarWidth: 'thin',
+												scrollbarColor:
 													'#ff1744 #ccff90',
+												boxSizing: 'border-box',
+											},
+											'&*::before, *::after': {
+												boxSizing: 'border-box',
 											},
 											'&::-webkit-scrollbar, & *::-webkit-scrollbar':
 												{

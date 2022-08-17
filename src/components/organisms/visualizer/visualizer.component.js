@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 
+import Frame from '../../molecules/frame/frame.component';
+
 import { Algorithm } from '../../../utils/mappings/mappings.utils';
 
 const Visualizer = ({ algorithm, array }) => {
@@ -18,9 +20,15 @@ const Visualizer = ({ algorithm, array }) => {
 			<Box
 				sx={{
 					width: '100%',
-					height: '100vh',
+					height: {
+						xs: 'calc(100vh - 56px)',
+						sm: 'calc(100vh - 64px)',
+					},
+					padding: { xs: '15px 8px', md: '20px 18px' },
 				}}
-			></Box>
+			>
+				<Frame bars={array.length} array={array} />
+			</Box>
 		</>
 	);
 };
