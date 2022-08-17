@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -7,12 +7,14 @@ const Bar = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
 	marginTop: 0,
 	textAlign: 'center',
-	color: theme.palette.text.secondary,
+	color:
+		theme.palette.mode === 'dark' ? '#000' : theme.palette.text.secondary,
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'flex-end',
 	borderBottomLeftRadius: 0,
 	borderBottomRightRadius: 0,
+	backgroundColor: theme.palette.mode === 'dark' ? '#ffffffde' : '#fff',
 	'&:first-of-type': {
 		marginLeft: 0,
 	},
@@ -22,6 +24,8 @@ const Bar = styled(Paper)(({ theme }) => ({
 }));
 
 const Bars = ({ array }) => {
+	const theme = useTheme();
+
 	return (
 		<>
 			{array.map((num, index) => (
@@ -64,6 +68,10 @@ const Bars = ({ array }) => {
 									100 / array.length <= 4 ? 'none' : 'inherit'
 								}`,
 							},
+							color:
+								theme.palette.mode === 'dark'
+									? '#000'
+									: theme.palette.text.secondary,
 						}}
 					>
 						{num}

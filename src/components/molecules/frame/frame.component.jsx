@@ -6,7 +6,8 @@ import Paper from '@mui/material/Paper';
 import Bars from '../../atoms/bars/bars.component';
 
 const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#8ce889',
+	backgroundColor:
+		theme.palette.mode === 'dark' ? theme.palette.primary.light : '#8ce889',
 	...theme.typography.body2,
 	// padding: { xs: '20px 25px 10px 25px', md: '20px 25px 10px 25px' },
 	// padding: '20px 25px 10px 25px',
