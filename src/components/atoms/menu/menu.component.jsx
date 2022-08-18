@@ -49,7 +49,7 @@ const StyledMenu = styled(props => (
 	},
 }));
 
-const Menu = ({ sx, anchorEl, setAnchorEl, children }) => {
+const Menu = ({ sx, anchorEl, setAnchorEl, text, children }) => {
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
 		setAnchorEl(event.currentTarget);
@@ -79,7 +79,9 @@ const Menu = ({ sx, anchorEl, setAnchorEl, children }) => {
 					},
 					...sx,
 				}}
-			></Button>
+			>
+				{text}
+			</Button>
 			<StyledMenu
 				id='demo-customized-menu'
 				MenuListProps={{

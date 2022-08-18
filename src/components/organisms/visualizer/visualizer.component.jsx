@@ -26,10 +26,19 @@ const ColorBox = styled(Paper)(({ theme, darkbg, lightbg }) => ({
 const Visualizer = ({ algorithm, array }) => {
 	const [stackTrace, setStackTrace] = useState([]);
 	const [currentArr, setCurrentArr] = useState([...array]);
-	const [isPlaying, setIsPlaying, index] = useAppControls(
-		stackTrace,
-		setCurrentArr
-	);
+	const [
+		isPlaying,
+		setIsPlaying,
+		index,
+		speed,
+		setSpeed,
+		skipToNextStep,
+		skipToPrevStep,
+		skipToFirstStep,
+		playable,
+		nextDisabled,
+		prevDisabled,
+	] = useAppControls(stackTrace, setCurrentArr);
 
 	useEffect(() => {
 		const arr = [...array];
@@ -76,20 +85,18 @@ const Visualizer = ({ algorithm, array }) => {
 					</Grid>
 					<Grid item xs={12}>
 						<AppControls
-							stackTrace={stackTrace}
 							isPlaying={isPlaying}
 							setIsPlaying={setIsPlaying}
+							speed={speed}
+							setSpeed={setSpeed}
+							skipToNext={skipToNextStep}
+							skipToPrev={skipToPrevStep}
+							skipToFirst={skipToFirstStep}
+							playable={playable}
+							nextDisabled={nextDisabled}
+							prevDisabled={prevDisabled}
 						/>
 					</Grid>
-					{/* <Grid item sx={{ display: 'flex', marginRight: '30px' }}>
-						<ColorBox
-							darkbg={FunctionalityColorMappingsDark.unsorted}
-							lightbg={FunctionalityColorMappingsLight.unsorted}
-						/>
-						<Typography variant='body1' component='span'>
-							Unsorted
-						</Typography>
-					</Grid> */}
 					{Algorithm[algorithm].functionalityKeys.functionalityA && (
 						<Grid
 							item

@@ -18,7 +18,7 @@ const SortingNavigation = () => {
 	const params = useParams();
 	const [arrayLength, setArrayLength] = useState(5);
 	const [array, setArray] = useState([]);
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [isMenuOpen, setIsMenuOpen] = useState(null);
 
 	const generateNewArray = () => {
 		const newArray = [];
@@ -91,8 +91,8 @@ const SortingNavigation = () => {
 					{arrayLength}
 				</Typography>
 				<Menu
-					anchorEl={anchorEl}
-					setAnchorEl={setAnchorEl}
+					anchorEl={isMenuOpen}
+					setAnchorEl={setIsMenuOpen}
 					sx={{ display: { xs: 'inline-flex', md: 'none' } }}
 				>
 					<MenuItem onClick={generateNewArray} disableRipple>
