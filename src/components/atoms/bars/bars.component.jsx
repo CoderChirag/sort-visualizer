@@ -1,7 +1,13 @@
+import { useState, useEffect } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+
+import {
+	FunctionalityColorMappingsLight,
+	FunctionalityColorMappingsDark,
+} from '../../../utils/mappings/mappings.utils';
 
 const Bar = styled(Paper)(({ theme }) => ({
 	...theme.typography.body2,
@@ -15,6 +21,7 @@ const Bar = styled(Paper)(({ theme }) => ({
 	borderBottomLeftRadius: 0,
 	borderBottomRightRadius: 0,
 	backgroundColor: theme.palette.mode === 'dark' ? '#ffffffde' : '#fff',
+	transition: 'all 0.1s ease-in-out',
 	'&:first-of-type': {
 		marginLeft: 0,
 	},
@@ -23,8 +30,66 @@ const Bar = styled(Paper)(({ theme }) => ({
 	},
 }));
 
-const Bars = ({ array }) => {
+const Bars = ({ array, currentStackTraceInstance, playing }) => {
 	const theme = useTheme();
+	const [barsStates, setBarsStates] = useState([]);
+
+	useEffect(() => {
+		const newBarsStates = array.map((ele, index) => {
+			let backgroundColor = null;
+			if (currentStackTraceInstance?.functionalityA.includes(index)) {
+				theme.palette.mode === 'light'
+					? (backgroundColor =
+							FunctionalityColorMappingsLight.functionalityA)
+					: (backgroundColor =
+							FunctionalityColorMappingsDark.functionalityA);
+			} else if (
+				currentStackTraceInstance?.functionalityB.includes(index)
+			) {
+				theme.palette.mode === 'light'
+					? (backgroundColor =
+							FunctionalityColorMappingsLight.functionalityB)
+					: (backgroundColor =
+							FunctionalityColorMappingsDark.functionalityB);
+			} else if (
+				currentStackTraceInstance?.functionalityC.includes(index)
+			) {
+				theme.palette.mode === 'light'
+					? (backgroundColor =
+							FunctionalityColorMappingsLight.functionalityC)
+					: (backgroundColor =
+							FunctionalityColorMappingsDark.functionalityC);
+			} else if (
+				currentStackTraceInstance?.functionalityD.includes(index)
+			) {
+				theme.palette.mode === 'light'
+					? (backgroundColor =
+							FunctionalityColorMappingsLight.functionalityD)
+					: (backgroundColor =
+							FunctionalityColorMappingsDark.functionalityD);
+			} else if (
+				currentStackTraceInstance?.sortedIndices.includes(index)
+			) {
+				theme.palette.mode === 'light'
+					? (backgroundColor = FunctionalityColorMappingsLight.sorted)
+					: (backgroundColor = FunctionalityColorMappingsDark.sorted);
+			}
+			return {
+				isActive:
+					currentStackTraceInstance?.functionalityA.includes(index) ||
+					currentStackTraceInstance?.functionalityB.includes(index) ||
+					currentStackTraceInstance?.functionalityC.includes(index) ||
+					currentStackTraceInstance?.functionalityD.includes(index),
+				isSorted:
+					index ===
+					currentStackTraceInstance?.sortedIndices[
+						currentStackTraceInstance.sortedIndices.length - 1
+					],
+				backgroundColor,
+			};
+		});
+		setBarsStates(newBarsStates);
+	}, [currentStackTraceInstance, array, theme.palette.mode]);
 
 	return (
 		<>
@@ -35,15 +100,60 @@ const Bars = ({ array }) => {
 						height: `${(num / Math.max(...array)) * 100}%`,
 						width: `${100 / array.length}%`,
 						...(array.length >= 50
-							? { margin: { xs: 0.08, md: 0.1 } }
+							? {
+									margin: {
+										xs: barsStates[index]?.isActive
+											? 0.5
+											: 0.08,
+										md: barsStates[index]?.isActive
+											? 0.8
+											: 0.1,
+									},
+							  }
 							: {}),
 						...(array.length < 50
-							? { margin: { xs: 0.25, md: 0.5 } }
+							? {
+									margin: {
+										xs: barsStates[index]?.isActive
+											? 0.5
+											: 0.1,
+										md: barsStates[index]?.isActive
+											? 1.5
+											: playing
+											? 0.2
+											: 0.5,
+									},
+							  }
 							: {}),
 						...(array.length < 20
-							? { margin: { xs: 0.5, md: 1 } }
+							? {
+									margin: {
+										xs: barsStates[index]?.isActive
+											? 1.5
+											: playing
+											? 0.2
+											: 0.5,
+										md: barsStates[index]?.isActive
+											? 5
+											: playing
+											? 0.2
+											: 1,
+									},
+							  }
 							: {}),
 						marginBottom: '0!important',
+						marginLeft: {
+							xs: barsStates[index]?.isSorted
+								? `${theme.spacing(2)}!important`
+								: null,
+							md: barsStates[index]?.isSorted
+								? `${theme.spacing(5)}!important`
+								: null,
+						},
+						backgroundColor:
+							barsStates.length > index
+								? barsStates[index].backgroundColor
+								: null,
 					}}
 				>
 					<Typography

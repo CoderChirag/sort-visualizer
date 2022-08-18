@@ -6,11 +6,16 @@ import Grid from '@mui/material/Grid';
 import Frame from '../../molecules/frame/frame.component';
 import AppControls from '../../molecules/app-controls/app-controls.component';
 
+import { useAppControls } from '../../../hooks/useAppControls.hook';
 import { Algorithm } from '../../../utils/mappings/mappings.utils';
 
 const Visualizer = ({ algorithm, array }) => {
 	const [stackTrace, setStackTrace] = useState([]);
 	const [currentArr, setCurrentArr] = useState([...array]);
+	const [isPlaying, setIsPlaying, index] = useAppControls(
+		stackTrace,
+		setCurrentArr
+	);
 
 	useEffect(() => {
 		const arr = [...array];
@@ -18,19 +23,6 @@ const Visualizer = ({ algorithm, array }) => {
 		setStackTrace(stackTrace);
 		setCurrentArr([...array]);
 	}, [array, algorithm]);
-
-	const playAnimation = () => {
-		let index = 0;
-		console.log(1);
-		const interval = setInterval(() => {
-			if (index < stackTrace.length) {
-				setCurrentArr([...stackTrace[index]['arr']]);
-				index++;
-			} else {
-				clearInterval(interval);
-			}
-		}, 1000);
-	};
 
 	return (
 		<>
@@ -45,12 +37,20 @@ const Visualizer = ({ algorithm, array }) => {
 				}}
 			>
 				<Grid item xs={12} sx={{ height: { xs: '50%', md: '65%' } }}>
-					<Frame array={currentArr} />
+					{console.log(index)}
+					<Frame
+						array={currentArr}
+						currentStackTraceInstance={
+							index < stackTrace.length ? stackTrace[index] : null
+						}
+						playing={isPlaying}
+					/>
 				</Grid>
 				<Grid item xs={12} sx={{ padding: '20px 0' }}>
 					<AppControls
 						stackTrace={stackTrace}
-						setCurrentArr={setCurrentArr}
+						isPlaying={isPlaying}
+						setIsPlaying={setIsPlaying}
 					/>
 				</Grid>
 			</Box>

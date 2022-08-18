@@ -27,9 +27,7 @@ const PlayButton = styled(Button)(({ theme }) => ({
 	},
 }));
 
-const AppControls = ({ stackTrace, setCurrentArr }) => {
-	const [isPlaying, setIsPlaying] = useAppControls(stackTrace, setCurrentArr);
-
+const AppControls = ({ stackTrace, isPlaying, setIsPlaying }) => {
 	return (
 		<Grid container justifyContent='center' alignItems='center' spacing={2}>
 			<Grid
@@ -56,17 +54,15 @@ const AppControls = ({ stackTrace, setCurrentArr }) => {
 					sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
 				/>
 			</Grid>
-			<Grid item>
+			<Grid item onClick={() => setIsPlaying(prevVal => !prevVal)}>
 				<PlayButton>
 					{isPlaying ? (
 						<PauseIcon
 							sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
-							onClick={() => setIsPlaying(false)}
 						/>
 					) : (
 						<PlayArrowIcon
 							sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}
-							onClick={() => setIsPlaying(true)}
 						/>
 					)}
 				</PlayButton>

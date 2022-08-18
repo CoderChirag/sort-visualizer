@@ -29,11 +29,15 @@ const Item = styled(Paper)(({ theme }) => ({
 	},
 }));
 
-const Frame = ({ array }) => {
+const Frame = ({ array, currentStackTraceInstance, playing }) => {
 	return (
 		<>
 			<Item>
-				<Bars array={array} />
+				<Bars
+					array={array}
+					currentStackTraceInstance={currentStackTraceInstance}
+					playing={playing}
+				/>
 			</Item>
 		</>
 	);
