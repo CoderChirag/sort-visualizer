@@ -1,10 +1,16 @@
-import BubbleSort from '../../algorithms/bubbleSort.algorithm';
+import BubbleSort, {
+	bubbleSortFunctionalityKeys,
+} from '../../algorithms/bubbleSort.algorithm';
 
 export const Algorithm = {
-	bubbleSort: BubbleSort,
+	bubbleSort: {
+		stackTrace: BubbleSort,
+		functionalityKeys: bubbleSortFunctionalityKeys,
+	},
 };
 
 export const FunctionalityColorMappingsLight = {
+	unsorted: '#ffffffde',
 	functionalityA: '#ffc107',
 	functionalityB: '#dc3545',
 	functionalityC: '#17a2b8',
@@ -13,6 +19,7 @@ export const FunctionalityColorMappingsLight = {
 };
 
 export const FunctionalityColorMappingsDark = {
+	unsorted: '#ffffffde',
 	functionalityA: '#ffc107',
 	functionalityB: '#dc3545',
 	functionalityC: '#17a2b8',

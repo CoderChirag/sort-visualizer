@@ -23,12 +23,15 @@ export const useAppControls = (stackTrace, setCurrentArr) => {
 	}, [stackTrace]);
 
 	useEffect(() => {
-		if (index < stackTrace.length && isPlaying) {
+		if (index === 0 && isPlaying) {
+			setCurrentArr([...stackTrace[index]['arr']]);
+			setIndex(index + 1);
+		} else if (index < stackTrace.length && isPlaying) {
 			timeout.current = setTimeout(() => {
 				setCurrentArr([...stackTrace[index]['arr']]);
 				setIndex(index + 1);
 				timeout.current = null;
-			}, 100);
+			}, 1000);
 		} else {
 			if (timeout.current) {
 				clearTimeout(timeout.current);

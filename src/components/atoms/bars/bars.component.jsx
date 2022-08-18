@@ -20,7 +20,10 @@ const Bar = styled(Paper)(({ theme }) => ({
 	alignItems: 'flex-end',
 	borderBottomLeftRadius: 0,
 	borderBottomRightRadius: 0,
-	backgroundColor: theme.palette.mode === 'dark' ? '#ffffffde' : '#fff',
+	backgroundColor:
+		theme.palette.mode === 'dark'
+			? FunctionalityColorMappingsDark.unsorted
+			: FunctionalityColorMappingsLight.unsorted,
 	transition: 'all 0.1s ease-in-out',
 	'&:first-of-type': {
 		marginLeft: 0,
