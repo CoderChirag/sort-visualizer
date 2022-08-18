@@ -34,7 +34,7 @@ const StyledMenu = styled(props => (
 		backgroundColor:
 			theme.palette.mode === 'light'
 				? '#acfbbe'
-				: theme.palette.grey[850],
+				: theme.palette.primary.main,
 		'& .MuiMenu-list': {
 			padding: '4px 0',
 		},
@@ -100,7 +100,15 @@ const NavbarMenu = ({
 				disableElevation
 				onClick={handleClick}
 				endIcon={<KeyboardArrowDownIcon />}
-				sx={{ minWidth: '0px', width: 'max-content', ...sx }}
+				sx={{
+					minWidth: '0px',
+					width: 'max-content',
+					backgroundColor: 'transparent',
+					'&:hover': {
+						backgroundColor: 'transparent',
+					},
+					...sx,
+				}}
 			></Button>
 			<StyledMenu
 				id='demo-customized-menu'

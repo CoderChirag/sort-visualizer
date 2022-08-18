@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from 'react';
+import { createContext, useState, useMemo, useEffect } from 'react';
 import {
 	ThemeProvider as MuiThemeProvider,
 	createTheme,
@@ -11,6 +11,33 @@ export const ThemeContext = createContext({
 
 export const ThemeProvider = ({ children }) => {
 	const [mode, setMode] = useState('light');
+	const [themeUpdated, setThemeUpdated] = useState(false);
+	useEffect(() => {
+		if (window.localStorage && window.localStorage.getItem('theme')) {
+			const theme = window.localStorage.getItem('theme');
+			console.log(theme);
+			if (theme === 'dark' || theme === 'light') {
+				setMode(theme);
+			} else {
+				window.localStorage.setItem('theme', 'light');
+				setMode('light');
+			}
+		} else if (
+			window.matchMedia &&
+			window.matchMedia('(prefers-color-scheme: dark)').matches
+		) {
+			window.localStorage.setItem('theme', 'dark');
+			setMode('dark');
+		}
+		setThemeUpdated(true);
+	}, []);
+
+	useEffect(() => {
+		if (themeUpdated) {
+			window.localStorage.setItem('theme', mode);
+		}
+	}, [mode, themeUpdated]);
+
 	const colorMode = useMemo(
 		() => ({
 			toggleColorMode: () => {
