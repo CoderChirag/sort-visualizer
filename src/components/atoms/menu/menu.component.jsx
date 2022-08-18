@@ -1,16 +1,11 @@
-import { useState } from 'react';
-import { styled, alpha, useTheme } from '@mui/material/styles';
+import { styled, alpha } from '@mui/material/styles';
 
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { Menu as MuiMenu } from '@mui/material/';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Typography } from '@mui/material';
 
 const StyledMenu = styled(props => (
-	<Menu
+	<MuiMenu
 		elevation={0}
 		anchorOrigin={{
 			vertical: 'bottom',
@@ -54,15 +49,7 @@ const StyledMenu = styled(props => (
 	},
 }));
 
-const NavbarMenu = ({
-	sx,
-	randomizeHandler,
-	arrayLength,
-	arrayLengthHandler,
-}) => {
-	const theme = useTheme();
-
-	const [anchorEl, setAnchorEl] = useState(null);
+const Menu = ({ sx, anchorEl, setAnchorEl, children }) => {
 	const open = Boolean(anchorEl);
 	const handleClick = event => {
 		setAnchorEl(event.currentTarget);
@@ -70,23 +57,6 @@ const NavbarMenu = ({
 
 	const handleClose = () => {
 		setAnchorEl(null);
-	};
-
-	const handleRandomize = () => {
-		randomizeHandler();
-		setAnchorEl(null);
-	};
-
-	const decrementArrayLength = () => {
-		if (arrayLength > 6) {
-			arrayLengthHandler(arrayLength - 1);
-		}
-	};
-
-	const incrementArrayLength = () => {
-		if (arrayLength < 100) {
-			arrayLengthHandler(arrayLength + 1);
-		}
 	};
 
 	return (
@@ -119,59 +89,10 @@ const NavbarMenu = ({
 				open={open}
 				onClose={handleClose}
 			>
-				{/* <MenuItem onClick={handleClose} disableRipple>
-					<EditIcon />
-					Edit
-				</MenuItem>
-				<MenuItem onClick={handleClose} disableRipple>
-					<FileCopyIcon />
-					Duplicate
-				</MenuItem>
-				<Divider sx={{ my: 0.5 }} />
-				<MenuItem onClick={handleClose} disableRipple>
-					<ArchiveIcon />
-					Archive
-				</MenuItem>
-				<MenuItem onClick={handleClose} disableRipple>
-					<MoreHorizIcon />
-					More
-				</MenuItem> */}
-				<MenuItem onClick={handleRandomize} disableRipple>
-					Randomize
-				</MenuItem>
-				<MenuItem
-					disableRipple
-					sx={{ display: 'flex', justifyContent: 'space-between' }}
-				>
-					<RemoveIcon
-						style={{
-							marginRight: 0,
-							cursor: 'pointer',
-							color:
-								theme.palette.mode === 'light'
-									? '#000'
-									: '#fff',
-						}}
-						onClick={decrementArrayLength}
-					/>
-					<Typography variant='p' component='span'>
-						{arrayLength}
-					</Typography>
-					<AddIcon
-						style={{
-							marginRight: '0',
-							cursor: 'pointer',
-							color:
-								theme.palette.mode === 'light'
-									? '#000'
-									: '#fff',
-						}}
-						onClick={incrementArrayLength}
-					/>
-				</MenuItem>
+				{children}
 			</StyledMenu>
 		</>
 	);
 };
 
-export default NavbarMenu;
+export default Menu;

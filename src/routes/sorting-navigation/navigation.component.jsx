@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 import Button from '@mui/material/Button';
 import Slider from '@mui/material/Slider';
 import { Typography } from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
-import NavbarMenu from '../../components/atoms/navbar-menu/navbar-menu.component';
+import Menu from '../../components/atoms/menu/menu.component';
 import Navbar from '../../components/molecules/navbar/navbar.component';
 import Visualizer from '../../components/organisms/visualizer/visualizer.component';
 
 const SortingNavigation = () => {
+	const theme = useTheme();
 	const params = useParams();
 	const [arrayLength, setArrayLength] = useState(5);
 	const [array, setArray] = useState([]);
+	const [anchorEl, setAnchorEl] = useState(null);
 
 	const generateNewArray = () => {
 		const newArray = [];
@@ -22,6 +28,24 @@ const SortingNavigation = () => {
 		setArray(newArray);
 	};
 
+	const handleArrayLengthChange = (event, newValue) => {
+		if (typeof newValue === 'number') {
+			setArrayLength(newValue);
+		}
+	};
+
+	const decrementArrayLength = () => {
+		if (arrayLength > 5) {
+			setArrayLength(arrayLength - 1);
+		}
+	};
+
+	const incrementArrayLength = () => {
+		if (arrayLength < 100) {
+			setArrayLength(arrayLength + 1);
+		}
+	};
+
 	useEffect(() => {
 		const newArray = [];
 		for (let i = 0; i < arrayLength; i++) {
@@ -29,12 +53,6 @@ const SortingNavigation = () => {
 		}
 		setArray(newArray);
 	}, [arrayLength]);
-
-	const handleArrayLengthChange = (event, newValue) => {
-		if (typeof newValue === 'number') {
-			setArrayLength(newValue);
-		}
-	};
 
 	return (
 		<>
@@ -72,12 +90,48 @@ const SortingNavigation = () => {
 				>
 					{arrayLength}
 				</Typography>
-				<NavbarMenu
+				<Menu
+					anchorEl={anchorEl}
+					setAnchorEl={setAnchorEl}
 					sx={{ display: { xs: 'inline-flex', md: 'none' } }}
-					randomizeHandler={generateNewArray}
-					arrayLength={arrayLength}
-					arrayLengthHandler={setArrayLength}
-				/>
+				>
+					<MenuItem onClick={generateNewArray} disableRipple>
+						Randomize
+					</MenuItem>
+					<MenuItem
+						disableRipple
+						sx={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<RemoveIcon
+							style={{
+								marginRight: 0,
+								cursor: 'pointer',
+								color:
+									theme.palette.mode === 'light'
+										? '#000'
+										: '#fff',
+							}}
+							onClick={decrementArrayLength}
+						/>
+						<Typography variant='p' component='span'>
+							{arrayLength}
+						</Typography>
+						<AddIcon
+							style={{
+								marginRight: '0',
+								cursor: 'pointer',
+								color:
+									theme.palette.mode === 'light'
+										? '#000'
+										: '#fff',
+							}}
+							onClick={incrementArrayLength}
+						/>
+					</MenuItem>
+				</Menu>
 			</Navbar>
 			<Visualizer algorithm={params.algorithm} array={array} />
 		</>
