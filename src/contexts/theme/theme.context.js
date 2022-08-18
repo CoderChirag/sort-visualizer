@@ -15,7 +15,6 @@ export const ThemeProvider = ({ children }) => {
 	useEffect(() => {
 		if (window.localStorage && window.localStorage.getItem('theme')) {
 			const theme = window.localStorage.getItem('theme');
-			console.log(theme);
 			if (theme === 'dark' || theme === 'light') {
 				setMode(theme);
 			} else {

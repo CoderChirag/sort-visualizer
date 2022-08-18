@@ -16,8 +16,8 @@ import {
 	FunctionalityColorMappingsDark,
 } from '../../../utils/mappings/mappings.utils';
 
-const ColorBox = styled(Paper)(({ theme, darkBg, lightBg }) => ({
-	backgroundColor: theme.palette.mode === 'dark' ? darkBg : lightBg,
+const ColorBox = styled(Paper)(({ theme, darkbg, lightbg }) => ({
+	backgroundColor: theme.palette.mode === 'dark' ? darkbg : lightbg,
 	width: '20px',
 	height: '20px',
 	marginRight: '12px',
@@ -83,8 +83,8 @@ const Visualizer = ({ algorithm, array }) => {
 					</Grid>
 					{/* <Grid item sx={{ display: 'flex', marginRight: '30px' }}>
 						<ColorBox
-							darkBg={FunctionalityColorMappingsDark.unsorted}
-							lightBg={FunctionalityColorMappingsLight.unsorted}
+							darkbg={FunctionalityColorMappingsDark.unsorted}
+							lightbg={FunctionalityColorMappingsLight.unsorted}
 						/>
 						<Typography variant='body1' component='span'>
 							Unsorted
@@ -96,10 +96,10 @@ const Visualizer = ({ algorithm, array }) => {
 							sx={{ display: 'flex', marginRight: '30px' }}
 						>
 							<ColorBox
-								darkBg={
+								darkbg={
 									FunctionalityColorMappingsDark.functionalityA
 								}
-								lightBg={
+								lightbg={
 									FunctionalityColorMappingsLight.functionalityA
 								}
 							/>
@@ -117,10 +117,10 @@ const Visualizer = ({ algorithm, array }) => {
 							sx={{ display: 'flex', marginRight: '30px' }}
 						>
 							<ColorBox
-								darkBg={
+								darkbg={
 									FunctionalityColorMappingsDark.functionalityB
 								}
-								lightBg={
+								lightbg={
 									FunctionalityColorMappingsLight.functionalityB
 								}
 							/>
@@ -138,10 +138,10 @@ const Visualizer = ({ algorithm, array }) => {
 							sx={{ display: 'flex', marginRight: '30px' }}
 						>
 							<ColorBox
-								darkBg={
+								darkbg={
 									FunctionalityColorMappingsDark.functionalityC
 								}
-								lightBg={
+								lightbg={
 									FunctionalityColorMappingsLight.functionalityC
 								}
 							/>
@@ -159,10 +159,10 @@ const Visualizer = ({ algorithm, array }) => {
 							sx={{ display: 'flex', marginRight: '30px' }}
 						>
 							<ColorBox
-								darkBg={
+								darkbg={
 									FunctionalityColorMappingsDark.functionalityD
 								}
-								lightBg={
+								lightbg={
 									FunctionalityColorMappingsLight.functionalityD
 								}
 							/>
@@ -176,8 +176,8 @@ const Visualizer = ({ algorithm, array }) => {
 					)}
 					<Grid item sx={{ display: 'flex', marginRight: '30px' }}>
 						<ColorBox
-							darkBg={FunctionalityColorMappingsDark.sorted}
-							lightBg={FunctionalityColorMappingsLight.sorted}
+							darkbg={FunctionalityColorMappingsDark.sorted}
+							lightbg={FunctionalityColorMappingsLight.sorted}
 						/>
 						<Typography variant='body1' component='span'>
 							Sorted
