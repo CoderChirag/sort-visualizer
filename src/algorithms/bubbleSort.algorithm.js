@@ -1,5 +1,5 @@
 import {
-	newStackTrace,
+	createNewStackTrace,
 	addToStackTrace,
 	getLastSortedIndices,
 	swap,
@@ -8,7 +8,7 @@ import {
 
 const BubbleSort = arr => {
 	// Create a new Stack Trace
-	const stackTrace = newStackTrace(arr);
+	const stackTrace = createNewStackTrace(arr);
 	// Sorting Algorithm
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = 0; j < arr.length - i - 1; j++) {
