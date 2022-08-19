@@ -11,7 +11,7 @@ import AppControls from '../../molecules/app-controls/app-controls.component';
 
 import { useAppControls } from '../../../hooks/useAppControls.hook';
 import {
-	Algorithm,
+	AlgoMappings,
 	FunctionalityColorMappingsLight,
 	FunctionalityColorMappingsDark,
 } from '../../../utils/mappings/mappings.utils';
@@ -42,7 +42,7 @@ const Visualizer = ({ algorithm, array }) => {
 
 	useEffect(() => {
 		const arr = [...array];
-		const stackTrace = Algorithm[algorithm].stackTrace(arr);
+		const stackTrace = AlgoMappings[algorithm].stackTrace(arr);
 		setStackTrace(stackTrace);
 		setCurrentArr([...array]);
 	}, [array, algorithm]);
@@ -97,7 +97,8 @@ const Visualizer = ({ algorithm, array }) => {
 							prevDisabled={prevDisabled}
 						/>
 					</Grid>
-					{Algorithm[algorithm].functionalityKeys.functionalityA && (
+					{AlgoMappings[algorithm].functionalityKeys
+						.functionalityA && (
 						<Grid
 							item
 							sx={{ display: 'flex', marginRight: '30px' }}
@@ -112,13 +113,14 @@ const Visualizer = ({ algorithm, array }) => {
 							/>
 							<Typography variant='body1' component='span'>
 								{
-									Algorithm[algorithm].functionalityKeys
+									AlgoMappings[algorithm].functionalityKeys
 										.functionalityA
 								}
 							</Typography>
 						</Grid>
 					)}
-					{Algorithm[algorithm].functionalityKeys.functionalityB && (
+					{AlgoMappings[algorithm].functionalityKeys
+						.functionalityB && (
 						<Grid
 							item
 							sx={{ display: 'flex', marginRight: '30px' }}
@@ -133,13 +135,14 @@ const Visualizer = ({ algorithm, array }) => {
 							/>
 							<Typography variant='body1' component='span'>
 								{
-									Algorithm[algorithm].functionalityKeys
+									AlgoMappings[algorithm].functionalityKeys
 										.functionalityB
 								}
 							</Typography>
 						</Grid>
 					)}
-					{Algorithm[algorithm].functionalityKeys.functionalityC && (
+					{AlgoMappings[algorithm].functionalityKeys
+						.functionalityC && (
 						<Grid
 							item
 							sx={{ display: 'flex', marginRight: '30px' }}
@@ -154,13 +157,14 @@ const Visualizer = ({ algorithm, array }) => {
 							/>
 							<Typography variant='body1' component='span'>
 								{
-									Algorithm[algorithm].functionalityKeys
+									AlgoMappings[algorithm].functionalityKeys
 										.functionalityC
 								}
 							</Typography>
 						</Grid>
 					)}
-					{Algorithm[algorithm].functionalityKeys.functionalityD && (
+					{AlgoMappings[algorithm].functionalityKeys
+						.functionalityD && (
 						<Grid
 							item
 							sx={{ display: 'flex', marginRight: '30px' }}
@@ -175,7 +179,7 @@ const Visualizer = ({ algorithm, array }) => {
 							/>
 							<Typography variant='body1' component='span'>
 								{
-									Algorithm[algorithm].functionalityKeys
+									AlgoMappings[algorithm].functionalityKeys
 										.functionalityD
 								}
 							</Typography>

@@ -1,11 +1,24 @@
 import BubbleSort, {
 	bubbleSortFunctionalityKeys,
 } from '../../algorithms/bubbleSort.algorithm';
+import SelectionSort, {
+	selectionSortFunctionalityKeys,
+} from '../../algorithms/selectionSort.algorithm';
 
-export const Algorithm = {
+export const AlgoMappings = {
 	bubbleSort: {
+		name: 'Bubble Sort',
+		link: '/sorting/bubbleSort',
+		type: 'quadratic',
 		stackTrace: BubbleSort,
 		functionalityKeys: bubbleSortFunctionalityKeys,
+	},
+	selectionSort: {
+		name: 'Selection Sort',
+		link: '/sorting/selectionSort',
+		type: 'quadratic',
+		stackTrace: SelectionSort,
+		functionalityKeys: selectionSortFunctionalityKeys,
 	},
 };
 

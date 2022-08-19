@@ -22,6 +22,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../../../contexts/theme/theme.context';
+import { AlgoMappings } from '../../../utils/mappings/mappings.utils';
 
 const drawerWidth = 250;
 
@@ -142,7 +143,42 @@ const Navbar = ({ children }) => {
 									}
 									sx={{ marginTop: '15px' }}
 								>
-									<Link to='/sorting/bubbleSort'>
+									{Object.keys(AlgoMappings).map(algo => {
+										return (
+											AlgoMappings[algo].type ===
+												'quadratic' && (
+												<Link
+													to={AlgoMappings[algo].link}
+													key={algo}
+												>
+													<ListItemButton>
+														<ListItemIcon
+															sx={{ minWidth: 0 }}
+														>
+															<ChevronRightIcon
+																sx={{
+																	minWidth:
+																		'auto',
+																	marginRight:
+																		'15px',
+																	marginLeft:
+																		'8px',
+																}}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary={
+																AlgoMappings[
+																	algo
+																].name
+															}
+														></ListItemText>
+													</ListItemButton>
+												</Link>
+											)
+										);
+									})}
+									{/* <Link to='/sorting/bubbleSort'>
 										<ListItemButton>
 											<ListItemIcon>
 												<ChevronRightIcon
@@ -163,6 +199,27 @@ const Navbar = ({ children }) => {
 											></ListItemText>
 										</ListItemButton>
 									</Link>
+									<Link to='/sorting/selectionSort'>
+										<ListItemButton>
+											<ListItemIcon>
+												<ChevronRightIcon
+													sx={{
+														minWidth: 'auto',
+														marginRight: '16px',
+														marginLeft: '8px',
+													}}
+												/>
+											</ListItemIcon>
+											<ListItemText
+												primary='Selection Sort'
+												sx={{
+													paddingLeft: '15px',
+													fontSize: '1.5rem',
+													transform: 'scale(1.3)',
+												}}
+											></ListItemText>
+										</ListItemButton>
+									</Link> */}
 								</List>
 							</Box>
 						</Drawer>

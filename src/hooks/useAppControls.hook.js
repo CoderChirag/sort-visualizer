@@ -44,7 +44,7 @@ export const useAppControls = (stackTrace, setCurrentArr) => {
 	useEffect(() => {
 		if (isPlaying) {
 			if (index === 0) {
-				setCurrentArr([...stackTrace[index]['arr']]);
+				setCurrentArr([...stackTrace[index + 1]['arr']]);
 				setIndex(index + 1);
 			} else if (index < stackTrace.length - 1) {
 				setCurrentArr([...stackTrace[index]['arr']]);
@@ -54,6 +54,7 @@ export const useAppControls = (stackTrace, setCurrentArr) => {
 				}, 500 / speed);
 			} else if (index === stackTrace.length - 1) {
 				clearTimeout(timeout.current);
+				setCurrentArr([...stackTrace[index]['arr']]);
 				setisPlaying(false);
 				// setIndex(0);
 			}

@@ -145,14 +145,14 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 							  }
 							: {}),
 						marginBottom: '0!important',
-						marginLeft: {
-							xs: barsStates[index]?.isSorted
-								? `${theme.spacing(2)}!important`
-								: null,
-							md: barsStates[index]?.isSorted
-								? `${theme.spacing(5)}!important`
-								: null,
-						},
+						// marginLeft: {
+						// 	xs: barsStates[index]?.isSorted
+						// 		? `${theme.spacing(2)}!important`
+						// 		: null,
+						// 	md: barsStates[index]?.isSorted
+						// 		? `${theme.spacing(5)}!important`
+						// 		: null,
+						// },
 						backgroundColor:
 							barsStates.length > index
 								? barsStates[index].backgroundColor

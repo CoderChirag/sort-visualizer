@@ -1,4 +1,4 @@
-export const newStackTrace = arr => {
+export const createNewStackTrace = arr => {
 	return [
 		{
 			arr: [...arr],
@@ -35,9 +35,9 @@ export const getLastSortedIndices = stackTrace => {
 };
 
 export const swap = (arr, i, j) => {
-	arr[i] = arr[i] ^ arr[j];
-	arr[j] = arr[i] ^ arr[j];
-	arr[i] = arr[i] ^ arr[j];
+	const temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
 };
 
 export const createFunctionalityKeys = (

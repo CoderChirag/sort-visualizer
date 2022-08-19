@@ -14,7 +14,7 @@ import Navbar from '../../components/molecules/navbar/navbar.component';
 import Visualizer from '../../components/organisms/visualizer/visualizer.component';
 import NotFound from '../../components/organisms/404/not-found.component';
 
-import { Algorithm } from '../../utils/mappings/mappings.utils';
+import { AlgoMappings } from '../../utils/mappings/mappings.utils';
 
 const SortingNavigation = () => {
 	const theme = useTheme();
@@ -60,7 +60,7 @@ const SortingNavigation = () => {
 	return (
 		<>
 			<Navbar>
-				{Algorithm[params.algorithm] && (
+				{AlgoMappings[params.algorithm] && (
 					<>
 						<Button
 							color='inherit'
@@ -140,7 +140,7 @@ const SortingNavigation = () => {
 					</>
 				)}
 			</Navbar>
-			{Algorithm[params.algorithm] ? (
+			{AlgoMappings[params.algorithm] ? (
 				<Visualizer algorithm={params.algorithm} array={array} />
 			) : (
 				<NotFound />
