@@ -47,11 +47,11 @@ export const useAppControls = (stackTrace, setCurrentArr) => {
 				setCurrentArr([...stackTrace[index]['arr']]);
 				setIndex(index + 1);
 			} else if (index < stackTrace.length - 1) {
+				setCurrentArr([...stackTrace[index]['arr']]);
 				timeout.current = setTimeout(() => {
-					setCurrentArr([...stackTrace[index]['arr']]);
 					setIndex(index + 1);
 					timeout.current = null;
-				}, 200 / speed);
+				}, 500 / speed);
 			} else if (index === stackTrace.length - 1) {
 				clearTimeout(timeout.current);
 				setisPlaying(false);

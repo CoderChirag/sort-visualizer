@@ -21,10 +21,7 @@ export const FunctionalityColorMappingsLight = {
 export const FunctionalityColorMappingsDark = {
 	unsorted: '#ffffffde',
 	functionalityA: '#c6ff00',
-	// functionalityB: '#070422',
-	// functionalityB: '#ff0',
-	functionalityB: '#ffc107',
-	// functionalityB: '#dc3545',
+	functionalityB: '#fe4080',
 	functionalityC: '#17a2b8',
 	functionalityD: 'rgb(200 238 233)',
 	sorted: '#17f149',
