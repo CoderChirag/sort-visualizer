@@ -6,7 +6,7 @@ import Bars from '../../atoms/bars/bars.component';
 
 const Item = styled(Paper)(({ theme }) => ({
 	backgroundColor:
-		theme.palette.mode === 'dark' ? theme.palette.primary.light : '#ccff90',
+		theme.palette.mode === 'dark' ? theme.palette.primary.light : '#81ec7e',
 	...theme.typography.body2,
 	// padding: { xs: '20px 25px 10px 25px', md: '20px 25px 10px 25px' },
 	// padding: '20px 25px 10px 25px',
