@@ -34,6 +34,10 @@ const SelectionSort = arr => {
 			i,
 		]);
 	}
+	addToStackTrace(stackTrace, arr, [
+		...getLastSortedIndices(stackTrace),
+		arr.length - 1,
+	]);
 	return stackTrace;
 };
 
