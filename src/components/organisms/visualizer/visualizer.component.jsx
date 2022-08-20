@@ -71,6 +71,21 @@ const Visualizer = ({ algorithm, array }) => {
 					<Grid
 						item
 						xs={12}
+						sx={{ display: 'flex', justifyContent: 'center' }}
+					>
+						<Typography
+							variant='h4'
+							sx={{
+								textDecoration: 'underline',
+								fontSize: { md: '1.5rem' },
+							}}
+						>
+							{AlgoMappings[algorithm].name}
+						</Typography>
+					</Grid>
+					<Grid
+						item
+						xs={12}
 						sx={{ height: { xs: '50%', md: '65%' } }}
 					>
 						<Frame
