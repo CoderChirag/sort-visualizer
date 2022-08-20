@@ -12,14 +12,14 @@ const BubbleSort = arr => {
 	// Sorting Algorithm
 	for (let i = 0; i < arr.length; i++) {
 		for (let j = 0; j < arr.length - i - 1; j++) {
-			// Comparing A[j] and A[j+1]
+			// Visualize: Comparing A[j] and A[j+1]
 			addToStackTrace(stackTrace, arr, getLastSortedIndices(stackTrace), [
 				j,
 				j + 1,
 			]);
 			if (arr[j] > arr[j + 1]) {
 				swap(arr, j, j + 1);
-				// Swap A[j] and A[j+1]
+				// Visualize: Swap A[j] and A[j+1]
 				addToStackTrace(
 					stackTrace,
 					arr,
@@ -29,7 +29,7 @@ const BubbleSort = arr => {
 				);
 			}
 		}
-		// Final Sorted Value
+		// Visualize: Final Sorted Value
 		addToStackTrace(stackTrace, arr, [
 			...getLastSortedIndices(stackTrace),
 			arr.length - 1 - i,
