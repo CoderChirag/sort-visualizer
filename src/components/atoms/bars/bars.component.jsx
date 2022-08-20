@@ -40,6 +40,11 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 	useEffect(() => {
 		const newBarsStates = array.map((ele, index) => {
 			let backgroundColor = null;
+			if (currentStackTraceInstance?.sortedIndices.includes(index)) {
+				theme.palette.mode === 'light'
+					? (backgroundColor = FunctionalityColorMappingsLight.sorted)
+					: (backgroundColor = FunctionalityColorMappingsDark.sorted);
+			}
 			if (currentStackTraceInstance?.functionalityA.includes(index)) {
 				theme.palette.mode === 'light'
 					? (backgroundColor =
@@ -68,11 +73,7 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 					: (backgroundColor =
 							FunctionalityColorMappingsDark.functionalityD);
 			}
-			if (currentStackTraceInstance?.sortedIndices.includes(index)) {
-				theme.palette.mode === 'light'
-					? (backgroundColor = FunctionalityColorMappingsLight.sorted)
-					: (backgroundColor = FunctionalityColorMappingsDark.sorted);
-			}
+
 			return {
 				isActive:
 					currentStackTraceInstance?.functionalityA.includes(index) ||

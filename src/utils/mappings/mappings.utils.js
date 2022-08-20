@@ -4,6 +4,9 @@ import BubbleSort, {
 import SelectionSort, {
 	selectionSortFunctionalityKeys,
 } from '../../algorithms/selectionSort.algorithm';
+import InsertionSort, {
+	insertionSortFunctionalityKeys,
+} from '../../algorithms/insertionSort.algorithm';
 
 export const AlgoMappings = {
 	bubbleSort: {
@@ -19,6 +22,13 @@ export const AlgoMappings = {
 		type: 'quadratic',
 		stackTrace: SelectionSort,
 		functionalityKeys: selectionSortFunctionalityKeys,
+	},
+	insertionSort: {
+		name: 'Insertion Sort',
+		link: '/sorting/insertionSort',
+		type: 'quadratic',
+		stackTrace: InsertionSort,
+		functionalityKeys: insertionSortFunctionalityKeys,
 	},
 };
 
