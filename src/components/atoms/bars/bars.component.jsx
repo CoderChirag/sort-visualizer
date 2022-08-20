@@ -46,33 +46,29 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 							FunctionalityColorMappingsLight.functionalityA)
 					: (backgroundColor =
 							FunctionalityColorMappingsDark.functionalityA);
-			} else if (
-				currentStackTraceInstance?.functionalityB.includes(index)
-			) {
+			}
+			if (currentStackTraceInstance?.functionalityB.includes(index)) {
 				theme.palette.mode === 'light'
 					? (backgroundColor =
 							FunctionalityColorMappingsLight.functionalityB)
 					: (backgroundColor =
 							FunctionalityColorMappingsDark.functionalityB);
-			} else if (
-				currentStackTraceInstance?.functionalityC.includes(index)
-			) {
+			}
+			if (currentStackTraceInstance?.functionalityC.includes(index)) {
 				theme.palette.mode === 'light'
 					? (backgroundColor =
 							FunctionalityColorMappingsLight.functionalityC)
 					: (backgroundColor =
 							FunctionalityColorMappingsDark.functionalityC);
-			} else if (
-				currentStackTraceInstance?.functionalityD.includes(index)
-			) {
+			}
+			if (currentStackTraceInstance?.functionalityD.includes(index)) {
 				theme.palette.mode === 'light'
 					? (backgroundColor =
 							FunctionalityColorMappingsLight.functionalityD)
 					: (backgroundColor =
 							FunctionalityColorMappingsDark.functionalityD);
-			} else if (
-				currentStackTraceInstance?.sortedIndices.includes(index)
-			) {
+			}
+			if (currentStackTraceInstance?.sortedIndices.includes(index)) {
 				theme.palette.mode === 'light'
 					? (backgroundColor = FunctionalityColorMappingsLight.sorted)
 					: (backgroundColor = FunctionalityColorMappingsDark.sorted);
