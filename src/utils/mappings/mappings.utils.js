@@ -7,6 +7,9 @@ import SelectionSort, {
 import InsertionSort, {
 	insertionSortFunctionalityKeys,
 } from '../../algorithms/insertionSort.algorithm';
+import MergeSort, {
+	mergeSortFunctionalityKeys,
+} from '../../algorithms/mergeSort.algorithm';
 
 export const AlgoMappings = {
 	bubbleSort: {
@@ -29,6 +32,13 @@ export const AlgoMappings = {
 		type: 'quadratic',
 		stackTrace: InsertionSort,
 		functionalityKeys: insertionSortFunctionalityKeys,
+	},
+	mergeSort: {
+		name: 'Merge Sort',
+		link: '/sorting/mergeSort',
+		type: 'logarithmic',
+		stackTrace: MergeSort,
+		functionalityKeys: mergeSortFunctionalityKeys,
 	},
 };
 
