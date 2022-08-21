@@ -178,48 +178,58 @@ const Navbar = ({ children }) => {
 											)
 										);
 									})}
-									{/* <Link to='/sorting/bubbleSort'>
-										<ListItemButton>
-											<ListItemIcon>
-												<ChevronRightIcon
-													sx={{
-														minWidth: 'auto',
-														marginRight: '16px',
-														marginLeft: '8px',
-													}}
-												/>
-											</ListItemIcon>
-											<ListItemText
-												primary='Bubble Sort'
-												sx={{
-													paddingLeft: '15px',
-													fontSize: '1.5rem',
-													transform: 'scale(1.3)',
-												}}
-											></ListItemText>
-										</ListItemButton>
-									</Link>
-									<Link to='/sorting/selectionSort'>
-										<ListItemButton>
-											<ListItemIcon>
-												<ChevronRightIcon
-													sx={{
-														minWidth: 'auto',
-														marginRight: '16px',
-														marginLeft: '8px',
-													}}
-												/>
-											</ListItemIcon>
-											<ListItemText
-												primary='Selection Sort'
-												sx={{
-													paddingLeft: '15px',
-													fontSize: '1.5rem',
-													transform: 'scale(1.3)',
-												}}
-											></ListItemText>
-										</ListItemButton>
-									</Link> */}
+								</List>
+								<List
+									subheader={
+										<ListSubheader
+											component='div'
+											sx={{
+												backgroundColor: 'inherit',
+												fontSize: '1rem',
+												fontWeight: '900',
+												color: 'text.secondary',
+											}}
+										>
+											Logarithmic
+										</ListSubheader>
+									}
+									sx={{ marginTop: '15px' }}
+								>
+									{Object.keys(AlgoMappings).map(algo => {
+										return (
+											AlgoMappings[algo].type ===
+												'logarithmic' && (
+												<Link
+													to={AlgoMappings[algo].link}
+													key={algo}
+												>
+													<ListItemButton>
+														<ListItemIcon
+															sx={{ minWidth: 0 }}
+														>
+															<ChevronRightIcon
+																sx={{
+																	minWidth:
+																		'auto',
+																	marginRight:
+																		'15px',
+																	marginLeft:
+																		'8px',
+																}}
+															/>
+														</ListItemIcon>
+														<ListItemText
+															primary={
+																AlgoMappings[
+																	algo
+																].name
+															}
+														></ListItemText>
+													</ListItemButton>
+												</Link>
+											)
+										);
+									})}
 								</List>
 							</Box>
 						</Drawer>

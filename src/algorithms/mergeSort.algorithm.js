@@ -37,49 +37,49 @@ const MergeSort = arr => {
 
 	// Merge Sort Function
 	function recursiveMergeSort(array, start, end) {
-		// const length = end - start;
-		// if (length < 1) {
-		// 	console.log('<1', array);
-		// 	return array;
-		// }
-		// if (length < 2) {
-		// 	console.log('<2', [array[start]]);
-		// 	return [array[start]];
-		// }
 		if (start < end - 1) {
 			const midPoint = Math.floor((start + end) / 2);
 			// Visualize: Recursive Calling on the left half of the array
-			addToStackTrace(stackTrace, array, getLastSortedIndices, [
-				...createRange(start, midPoint - 1),
-			]);
+			addToStackTrace(
+				stackTrace,
+				array,
+				getLastSortedIndices(stackTrace),
+				[...createRange(start, midPoint)]
+			);
 			recursiveMergeSort(array, start, midPoint);
 			// Visualize: Recursive Calling on the right half of the array
 			addToStackTrace(
 				stackTrace,
 				array,
-				getLastSortedIndices,
-				[...createRange(start, midPoint - 1)],
-				[...createRange(midPoint, end - 1)]
+				getLastSortedIndices(stackTrace),
+				[],
+				[...createRange(midPoint, end)]
 			);
 			recursiveMergeSort(array, midPoint, end);
 			// Visualize: Merging the two halves of the array
 			addToStackTrace(
 				stackTrace,
 				array,
-				getLastSortedIndices,
+				getLastSortedIndices(stackTrace),
 				[],
 				[],
-				[...createRange(start, end - 1)]
+				[...createRange(start, end)]
 			);
 			merge(array, start, midPoint, end);
 			addToStackTrace(stackTrace, array, [
-				...getLastSortedIndices,
-				...createRange(start, end - 1),
+				...getLastSortedIndices(stackTrace),
+				...createRange(start, end),
+			]);
+		} else {
+			addToStackTrace(stackTrace, array, [
+				...getLastSortedIndices(stackTrace),
+				start,
 			]);
 		}
 	}
 
 	recursiveMergeSort(arr, 0, arr.length);
+	return stackTrace;
 };
 
 export const mergeSortFunctionalityKeys = createFunctionalityKeys(
