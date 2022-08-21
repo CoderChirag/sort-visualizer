@@ -48,3 +48,8 @@ export const createFunctionalityKeys = (
 ) => {
 	return { functionalityA, functionalityB, functionalityC, functionalityD };
 };
+
+export const createRange = (start, end) => {
+	// return Array.from({ length: end - start }, (element, index) => index + start);
+	return [...Array(end - start).keys()].map(i => i + start);
+};
