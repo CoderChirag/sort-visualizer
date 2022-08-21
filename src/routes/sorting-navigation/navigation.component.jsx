@@ -60,7 +60,6 @@ const SortingNavigation = () => {
 	return (
 		<>
 			<Navbar>
-				{/* {console.log(AlgoMappings[params.algorithm])} */}
 				{AlgoMappings[params.algorithm] && (
 					<>
 						<Button
