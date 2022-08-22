@@ -48,7 +48,7 @@ export const FunctionalityColorMappingsLight = {
 	functionalityB: '#dc3545',
 	functionalityC: '#eb8888',
 	functionalityD: '#17a2b8',
-	sorted: '#1c702f',
+	sorted: '#05ef2a',
 };
 
 export const FunctionalityColorMappingsDark = {
