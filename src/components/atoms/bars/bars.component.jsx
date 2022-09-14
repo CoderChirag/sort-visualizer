@@ -75,11 +75,28 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 			}
 
 			return {
+				isPrevActive:
+					currentStackTraceInstance?.functionalityA.includes(
+						index - 1
+					) ||
+					currentStackTraceInstance?.functionalityB.includes(
+						index - 1
+					) ||
+					currentStackTraceInstance?.functionalityC.includes(
+						index - 1
+					) ||
+					currentStackTraceInstance?.functionalityD.includes(
+						index - 1
+					) ||
+					currentStackTraceInstance?.sortedIndices.includes(
+						index - 1
+					),
 				isActive:
 					currentStackTraceInstance?.functionalityA.includes(index) ||
 					currentStackTraceInstance?.functionalityB.includes(index) ||
 					currentStackTraceInstance?.functionalityC.includes(index) ||
-					currentStackTraceInstance?.functionalityD.includes(index),
+					currentStackTraceInstance?.functionalityD.includes(index) ||
+					currentStackTraceInstance?.sortedIndices.includes(index),
 				isSorted:
 					index ===
 					currentStackTraceInstance?.sortedIndices[
@@ -101,43 +118,55 @@ const Bars = ({ array, currentStackTraceInstance, playing }) => {
 						width: `${100 / array.length}%`,
 						...(array.length >= 50
 							? {
-									margin: {
-										xs: barsStates[index]?.isActive
-											? 0.5
-											: 0.08,
-										md: barsStates[index]?.isActive
-											? 0.8
-											: 0.1,
+									marginLeft: {
+										xs:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 0.5
+												: 0.08,
+										md:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 0.8
+												: 0.1,
 									},
 							  }
 							: {}),
 						...(array.length < 50
 							? {
-									margin: {
-										xs: barsStates[index]?.isActive
-											? 0.5
-											: 0.1,
-										md: barsStates[index]?.isActive
-											? 1.5
-											: playing
-											? 0.2
-											: 0.5,
+									marginLeft: {
+										xs:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 0.5
+												: 0.1,
+										md:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 1.5
+												: // : playing
+												  // ? 0.2
+												  0.5,
 									},
 							  }
 							: {}),
 						...(array.length < 20
 							? {
-									margin: {
-										xs: barsStates[index]?.isActive
-											? 1.5
-											: playing
-											? 0.2
-											: 0.5,
-										md: barsStates[index]?.isActive
-											? 5
-											: playing
-											? 0.2
-											: 1,
+									marginLeft: {
+										xs:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 1.5
+												: // : playing
+												  // ? 0.2
+												  0.5,
+										md:
+											!barsStates[index]?.isActive &&
+											barsStates[index]?.isPrevActive
+												? 5
+												: // : playing
+												  // ? 0.2
+												  1,
 									},
 							  }
 							: {}),

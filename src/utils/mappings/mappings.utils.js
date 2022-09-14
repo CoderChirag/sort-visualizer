@@ -10,6 +10,9 @@ import InsertionSort, {
 import MergeSort, {
 	mergeSortFunctionalityKeys,
 } from '../../algorithms/mergeSort.algorithm';
+import QuickSort, {
+	quickSortFunctionalityKeys,
+} from '../../algorithms/quickSort.algorithm';
 
 export const AlgoMappings = {
 	bubbleSort: {
@@ -40,6 +43,13 @@ export const AlgoMappings = {
 		stackTrace: MergeSort,
 		functionalityKeys: mergeSortFunctionalityKeys,
 	},
+	quickSort: {
+		name: 'Quick Sort',
+		link: '/sorting/quickSort',
+		type: 'logarithmic',
+		stackTrace: QuickSort,
+		functionalityKeys: quickSortFunctionalityKeys,
+	},
 };
 
 export const FunctionalityColorMappingsLight = {
@@ -56,6 +66,6 @@ export const FunctionalityColorMappingsDark = {
 	functionalityA: '#c6ff00',
 	functionalityB: '#fe4080',
 	functionalityC: '#17a2b8',
-	functionalityD: 'rgb(200 238 233)',
+	functionalityD: '#8252c7',
 	sorted: '#17f149',
 };

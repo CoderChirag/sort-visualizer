@@ -51,5 +51,6 @@ export const createFunctionalityKeys = (
 
 export const createRange = (start, end) => {
 	// return Array.from({ length: end - start }, (element, index) => index + start);
+	if (end < start) return [];
 	return [...Array(end - start).keys()].map(i => i + start);
 };
