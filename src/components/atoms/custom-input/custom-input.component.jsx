@@ -43,9 +43,15 @@ export default function CustomInput({
 		if (array.length < 5) {
 			setInputErrorConfig({
 				error: true,
-				helperText: 'Minimum 5 length required.',
+				helperText: 'Minimum length of the array should be 5.',
 			});
 			return;
+		}
+		if (array.length > 100) {
+			setInputErrorConfig({
+				error: 'true',
+				helperText: 'Maximum length of the array should be 100.',
+			});
 		}
 		arrayLengthHandler(array.length);
 		arrayStateHandler(array);
