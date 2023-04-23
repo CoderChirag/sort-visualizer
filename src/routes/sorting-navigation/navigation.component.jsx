@@ -1,71 +1,89 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
-import Button from '@mui/material/Button';
-import Slider from '@mui/material/Slider';
-import { Typography } from '@mui/material';
-import MenuItem from '@mui/material/MenuItem';
+import { Typography, Button, Slider, TextField, MenuItem } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 import Menu from '../../components/atoms/menu/menu.component';
 import Navbar from '../../components/molecules/navbar/navbar.component';
 import Visualizer from '../../components/organisms/visualizer/visualizer.component';
+import CustomInput from '../../components/atoms/custom-input/custom-input.component';
 import NotFound from '../../components/organisms/404/not-found.component';
 
 import { AlgoMappings } from '../../utils/mappings/mappings.utils';
 
 const SortingNavigation = () => {
+	const generateNewArray = length => {
+		const newArray = [];
+		for (let i = 0; i < length; i++) {
+			newArray.push(Math.floor(Math.random() * arrayLength * 5) + 1);
+		}
+		return newArray;
+	};
+
 	const theme = useTheme();
 	const params = useParams();
 	const [arrayLength, setArrayLength] = useState(5);
-	const [array, setArray] = useState([]);
+	const [array, setArray] = useState(generateNewArray(arrayLength));
 	const [isMenuOpen, setIsMenuOpen] = useState(null);
-
-	const generateNewArray = () => {
-		const newArray = [];
-		for (let i = 0; i < arrayLength; i++) {
-			newArray.push(Math.floor(Math.random() * arrayLength * 5) + 1);
-		}
-		setArray(newArray);
-	};
+	const [customInputDialogState, setCustomInputDialogState] =
+		useState('closed');
 
 	const handleArrayLengthChange = (event, newValue) => {
 		if (typeof newValue === 'number') {
 			setArrayLength(newValue);
+			setArray(generateNewArray(newValue));
 		}
 	};
 
 	const decrementArrayLength = () => {
 		if (arrayLength > 5) {
 			setArrayLength(arrayLength - 1);
+			setArray(generateNewArray(arrayLength - 1));
 		}
 	};
 
 	const incrementArrayLength = () => {
 		if (arrayLength < 100) {
 			setArrayLength(arrayLength + 1);
+			setArray(generateNewArray(arrayLength + 1));
 		}
 	};
-
-	useEffect(() => {
-		const newArray = [];
-		for (let i = 0; i < arrayLength; i++) {
-			newArray.push(Math.floor(Math.random() * arrayLength * 5) + 1);
-		}
-		setArray(newArray);
-	}, [arrayLength]);
 
 	return (
 		<>
 			<Navbar>
 				{AlgoMappings[params.algorithm] && (
 					<>
+						<CustomInput
+							state={customInputDialogState}
+							title={'Custom Array'}
+							textContent={
+								'Enter the array on which you want to visualize the sorting algorithm.'
+							}
+							stateHandler={setCustomInputDialogState}
+							arrayLengthHandler={setArrayLength}
+							arrayStateHandler={setArray}
+						/>
+
 						<Button
 							color='inherit'
 							sx={{ display: { xs: 'none', md: 'block' } }}
-							onClick={generateNewArray}
+							onClick={setCustomInputDialogState.bind(
+								null,
+								'open'
+							)}
+						>
+							Custom Array
+						</Button>
+						<Button
+							color='inherit'
+							sx={{ display: { xs: 'none', md: 'block' } }}
+							onClick={() =>
+								setArray(generateNewArray(arrayLength))
+							}
 						>
 							Randomize
 						</Button>
@@ -100,7 +118,27 @@ const SortingNavigation = () => {
 							setAnchorEl={setIsMenuOpen}
 							sx={{ display: { xs: 'inline-flex', md: 'none' } }}
 						>
-							<MenuItem onClick={generateNewArray} disableRipple>
+							<MenuItem
+								onClick={setCustomInputDialogState.bind(
+									null,
+									'open'
+								)}
+								disableRipple
+							>
+								{/* <CustomInput
+									state={customInputDialogState}
+									stateHandler={setCustomInputDialogState}
+								>
+									Custom Array
+								</CustomInput> */}
+								Custom Array
+							</MenuItem>
+							<MenuItem
+								onClick={() =>
+									setArray(generateNewArray(arrayLength))
+								}
+								disableRipple
+							>
 								Randomize
 							</MenuItem>
 							<MenuItem
